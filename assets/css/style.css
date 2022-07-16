@@ -4,13 +4,13 @@
     justify-content:center;
     align-items: center;
     border: 1px solid black;
-    width: 40%;
+    width: 60%;
     margin:auto;
     margin-bottom: 20px;
     
 }
 .sheds> input{
-    width: 40%;
+    width: 60%;
 }
 .table{
     display:flex;
@@ -18,12 +18,39 @@
     justify-content: center;
     align-items: center;
     border: 1px solid black;
-    width: 40%;
+    width: 60%;
     margin:auto
 }
 .table th, td {
     border:1px solid black;
-    width: 40%;
-    
-    
+    width: 60%;
+   }
+   .income{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 60%;
+    margin:auto;
+    margin-bottom: 20px;
+   }
+/*.weekly{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 30%;
+    margin:auto
 }
+.button{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 30%;
+    margin:auto
+}*/
+
