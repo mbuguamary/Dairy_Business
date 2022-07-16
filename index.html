@@ -21,15 +21,32 @@
         
         <label>Shed D</label>
          <input type="text" id="shedd" name="ShedD" /> 
-         <input type = "button" onclick = "dailyProduction()" value = "Display"> 
-       
+         <input type = "button" onclick = "dailyProduction()" value = "Daily Income"> 
+         
         <button>Daily Income </button>
+        <p id="add"></p>
         
         <button>Weekly Income </button>
         <button>yearly Income </button>
-        <input>
+        <input type="text" id="result" name="Result" />
         
     </div>
+    <div class ="income">
+    <div >
+        <label>Daily Income </label>
+        <input type="text" id="litres" name="ShedB" />
+        <label>Selling Price </label>
+         <input type="text" id="sprice" name="ShedB" />
+         <label>days </label>
+         <input type="text" id="days" name="ShedB" />
+         </div>
+         
+         <div >
+            <input type = "button" onclick = "WeeklyProduction()" value = "Weekly Income"> 
+           </div>
+        </div>
+   
+       
     <div class="table">
         <table>
             <tr>
