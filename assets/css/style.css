@@ -3,17 +3,27 @@
     flex-direction: column;
     justify-content:center;
     align-items: center;
+    border: 1px solid black;
+    width: 40%;
+    margin:auto;
+    margin-bottom: 20px;
     
+}
+.sheds> input{
+    width: 40%;
 }
 .table{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 1px solid black;
+    width: 40%;
+    margin:auto
 }
 .table th, td {
     border:1px solid black;
-   
+    width: 40%;
     
     
 }
