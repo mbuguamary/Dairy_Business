@@ -22,7 +22,7 @@
 + javascript- which is used to create functions
 
 ## live demo
-Click [here] https://github.com/mbuguamary/Dairy_Business to view the website.
+Click [here] https://mbuguamary.github.io/Dairy_Business/ to view the website.
 
 ## installations
   clone this project to use it
