@@ -9,61 +9,146 @@
     
 </head>
 <body>
-    <form>
-        <div class="sheds">
-        <label>Shed A </label> <input type="text" id="sheda" name="ShedA" /> 
-        
-        <label>Shed B </label>
-         <input type="text" id="shedb" name="ShedB" />
-       
-        <label>Shed C </label>
-        <input type="text" id="shedc" name="ShedC" /> 
-        
-        <label>Shed D</label>
-         <input type="text" id="shedd" name="ShedD" /> 
-         <input type = "button" onclick = "dailyProduction()" value = "Daily Income"> 
-         
-        <button>Daily Income </button>
-        <p id="add"></p>
-          
-    </div>
-    <div class ="income">
-    <div >
-        <label>Daily Income </label>
-        <input type="text" id="litre" name="Litres" />
-        <label>Selling Price </label>
-         <input type="text" id="sprice" name="Sprice" />
-         <label>days </label>
-         <input type="text" id="days" name="Days" />
-         </div>
-         
-         <div >
-            <input type = "button" onclick = "WeeklyProduction()" value = "Weekly Income"> 
-           </div>
-           <p id="result"></p>
-        </div>
-   
-       
-    <div class="table">
-        <table >
-            <thead>
-            <tr class="row">
-                <th>Month</th>
-                <th>Litres Produced</th>
-                <th>Number of days</th>
-                <th>Total Production</th>
+    <div class="wrapper">
+        <h1>Milk from sheds</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Shed</th>
+              <th>Total Milk</th>
             </tr>
-        </thead>
-        <tbody id="rows">
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+  
+        <h1>Set selling price. Current Price is <span id="rate"></span></h1>
+        <form>
+          <table>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  id="price"
+                  placeholder="Enter selling rate"
+                  min="1"
+                />
+              </td>
+              <td>
+                <button type="button" onclick="setPrice()">Save Rate</button>
+              </td>
+            </tr>
+          </table>
+        </form>
 
-        </tbody>
-        <button onclick="leapYearTotals()">Calculate Monthly Income</button>
-        <button>Price Comparison</button>
-
-    </div>
-
-    </form>
+        <h1>Month Income in a leap year</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Income</th>
+            </tr>
+          </thead>
+          <tbody id="month-rows"></tbody>
+        </table>
+      </div>
   <!--  <script src="assets/js/index.js"></script>-->
    <script src="assets/js/sample.js"></script>
+   <script>
+    // call total production
+    let totals = totalProduction();
+
+    //show current selling rate
+    showRate();
+    // show totals of each shed
+    showTotals();
+
+    // show monthly income in leap year
+    showMonthlyIncomeInLeapYear();
+
+    function showTotals() {
+      var table = document.getElementById("rows");
+      for (let i = 0; i < totals.length; i++) {
+        var row = table.insertRow(i);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = totals[i].shed;
+        cell2.innerHTML = totals[i].total;
+      }
+    }
+
+    function showMonthlyIncomeInLeapYear() {
+      let incomes = [
+        {
+          month: "January",
+          income: incomeOverTime(sellingPrice, 31),
+        },
+        {
+          month: "February",
+          income: incomeOverTime(sellingPrice, 29), // In a leap year, February has 29 days.
+        },
+        {
+          month: "March",
+          income: incomeOverTime(sellingPrice, 31),
+        },
+        {
+          month: "April",
+          income: incomeOverTime(sellingPrice, 30),
+        },
+        {
+          month: "May",
+          income: incomeOverTime(sellingPrice, 31),
+        },
+        {
+          month: "June",
+          income: incomeOverTime(sellingPrice, 30),
+        },
+        {
+          month: "July",
+          income: incomeOverTime(sellingPrice, 31),
+        },
+        {
+          month: "August",
+          income: incomeOverTime(sellingPrice, 31),
+        },
+        {
+          month: "September",
+          income: incomeOverTime(sellingPrice, 30),
+        },
+        {
+          month: "October",
+          income: incomeOverTime(sellingPrice, 31),
+        },
+        {
+          month: "November",
+          income: incomeOverTime(sellingPrice, 30),
+        },
+        {
+          month: "December",
+          income: incomeOverTime(sellingPrice, 31),
+        },
+      ];
+      var table = document.getElementById("month-rows");
+      table.innerHTML = "";
+      for (let i = 0; i < incomes.length; i++) {
+        var row = table.insertRow(i);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = incomes[i].month;
+        cell2.innerHTML = incomes[i].income;
+      }
+    }
+
+    //function to set the selling price
+    function setPrice() {
+      let price = document.getElementById("price").value;
+      setSellingPrice(parseInt(price));
+      showRate();
+      showMonthlyIncomeInLeapYear();
+    }
+
+    function showRate() {
+      document.getElementById("rate").innerText = sellingPrice;
+    }
+  </script>
 </body>
 </html>
